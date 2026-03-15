@@ -343,8 +343,8 @@ async function fetchAllPrices(){document.getElementById('refresh-icon').innerHTM
 function startAutoRefresh(){if(arTimer)clearInterval(arTimer);if(document.getElementById('auto-refresh').checked)arTimer=setInterval(fetchAllPrices,60000);}
 function toggleAutoRefresh(){startAutoRefresh();}
 
-async function saveState(){try{await window.storage.set('shannon_state',JSON.stringify({prices,prevClose,startPrices,startLots}));}catch(e){}}
-async function loadState(){try{const res=await window.storage.get('shannon_state');if(!res)return;const s=JSON.parse(res.value);if(s.prices)prices=s.prices;if(s.prevClose)prevClose=s.prevClose;if(s.startPrices)startPrices=s.startPrices;if(s.startLots)startLots=s.startLots;}catch(e){}}
+function saveState(){try{localStorage.setItem('shannon_state',JSON.stringify({prices,prevClose,startPrices,startLots}));}catch(e){}}
+function loadState(){try{const raw=localStorage.getItem('shannon_state');if(!raw)return;const s=JSON.parse(raw);if(s.prices)prices=s.prices;if(s.prevClose)prevClose=s.prevClose;if(s.startPrices)startPrices=s.startPrices;if(s.startLots)startLots=s.startLots;}catch(e){}}
 
 function saveAndCopy(){const code=btoa(unescape(encodeURIComponent(JSON.stringify({prices,prevClose,startPrices,startLots}))));document.getElementById('save-code').value=code;document.getElementById('save-code-wrap').style.display='block';navigator.clipboard?.writeText(code).then(()=>triggerAlert('buy','Kod kopyalandı!')).catch(()=>{document.getElementById('save-code').select();});}
 function showLoadInput(){const w=document.getElementById('load-wrap');w.style.display=w.style.display==='none'?'block':'none';}
