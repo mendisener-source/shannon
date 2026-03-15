@@ -1,3 +1,4 @@
+Content is user-generated and unverified.
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -111,8 +112,7 @@ header{position:sticky;top:0;z-index:100;background:#0d1117;border-bottom:1px so
   border:1px solid var(--accent);border-radius:12px;margin:12px;padding:14px;
   align-items:center;gap:12px;position:relative}
 .pwa-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),#0077ff);
-  border-radius:10px;display:flex;align-items:center;justify-content:center;
-  font-size:22px;flex-shrink:0}
+  border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
 .pwa-title{font-size:14px;font-weight:700;color:var(--accent)}
 .pwa-desc{font-size:11px;color:var(--muted);margin-top:2px}
 .pwa-btn{margin-top:8px;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);
@@ -133,7 +133,7 @@ header{position:sticky;top:0;z-index:100;background:#0d1117;border-bottom:1px so
   <div style="flex:1">
     <div class="pwa-title">Uygulamayı Yükle</div>
     <div class="pwa-desc">Ana ekrana ekle — internet olmadan da çalışır</div>
-    <button class="pwa-btn" id="pwa-install-btn" onclick="installPWA()">📲 ANA EKRANA EKLE</button>
+    <button class="pwa-btn" onclick="installPWA()">📲 ANA EKRANA EKLE</button>
   </div>
   <button class="pwa-close" onclick="dismissPWA()">✕</button>
 </div>
@@ -188,43 +188,25 @@ header{position:sticky;top:0;z-index:100;background:#0d1117;border-bottom:1px so
 <div id="tab-settings" class="section">
   <div class="sec-title"><span class="dot" style="background:var(--accent)"></span>Uygulama</div>
   <div class="card">
-    <button class="btn orange" id="pwa-btn-settings" onclick="installPWA()" style="display:none">
-      📲 ANA EKRANA EKLE (PWA)
-    </button>
+    <button class="btn orange" id="pwa-btn-settings" onclick="installPWA()" style="display:none">📲 ANA EKRANA EKLE (PWA)</button>
     <button class="btn" onclick="requestNotifPerm()">🔔 BİLDİRİM İZNİ TALEP ET</button>
     <div id="notif-status" style="font-size:11px;color:var(--muted);text-align:center;margin-top:-4px;margin-bottom:8px"></div>
   </div>
   <div class="sec-title"><span class="dot" style="background:var(--yellow)"></span>Uyarı Ayarları</div>
   <div class="card">
-    <div class="set-row">
-      <div><div style="font-size:14px">Ses Uyarısı</div></div>
-      <label class="toggle"><input type="checkbox" id="sound-toggle" checked><span class="tgl-sl"></span></label>
-    </div>
-    <div class="set-row">
-      <div><div style="font-size:14px">Titreşim</div></div>
-      <label class="toggle"><input type="checkbox" id="vibrate-toggle" checked><span class="tgl-sl"></span></label>
-    </div>
-    <div class="set-row">
-      <div><div style="font-size:14px">Push Bildirimi (Sinyal)</div></div>
-      <label class="toggle"><input type="checkbox" id="push-toggle" checked><span class="tgl-sl"></span></label>
-    </div>
-    <div class="set-row">
-      <div><div style="font-size:14px">Otomatik Yenile (60s)</div></div>
-      <label class="toggle"><input type="checkbox" id="auto-refresh" checked onchange="toggleAutoRefresh()"><span class="tgl-sl"></span></label>
-    </div>
+    <div class="set-row"><div><div style="font-size:14px">Ses Uyarısı</div></div><label class="toggle"><input type="checkbox" id="sound-toggle" checked><span class="tgl-sl"></span></label></div>
+    <div class="set-row"><div><div style="font-size:14px">Titreşim</div></div><label class="toggle"><input type="checkbox" id="vibrate-toggle" checked><span class="tgl-sl"></span></label></div>
+    <div class="set-row"><div><div style="font-size:14px">Push Bildirimi (Sinyal)</div></div><label class="toggle"><input type="checkbox" id="push-toggle" checked><span class="tgl-sl"></span></label></div>
+    <div class="set-row"><div><div style="font-size:14px">Otomatik Yenile (60s)</div></div><label class="toggle"><input type="checkbox" id="auto-refresh" checked onchange="toggleAutoRefresh()"><span class="tgl-sl"></span></label></div>
   </div>
   <div class="card" style="margin-top:4px">
     <button class="btn" onclick="fetchAllPrices()"><span id="refresh-icon">⟳</span> FİYATLARI GÜNCELLE</button>
     <button class="btn green" onclick="saveAndCopy()">💾 VERİLERİ KAYDET & KOPYALA</button>
     <div id="save-code-wrap" style="display:none;margin-top:10px">
-      <textarea id="save-code" readonly onclick="this.select()"
-        style="width:100%;height:80px;background:var(--bg);border:1px solid var(--green);border-radius:8px;
-        color:var(--green);font-family:'Share Tech Mono',monospace;font-size:11px;padding:8px;resize:none;outline:none"></textarea>
+      <textarea id="save-code" readonly onclick="this.select()" style="width:100%;height:80px;background:var(--bg);border:1px solid var(--green);border-radius:8px;color:var(--green);font-family:'Share Tech Mono',monospace;font-size:11px;padding:8px;resize:none;outline:none"></textarea>
       <button class="btn yellow" style="margin-top:8px" onclick="showLoadInput()">📂 KAYITLI VERİYİ YÜKLE</button>
       <div id="load-wrap" style="display:none;margin-top:8px">
-        <textarea id="load-code" placeholder="Kayıt kodunu yapıştır..."
-          style="width:100%;height:80px;background:var(--bg);border:1px solid var(--yellow);border-radius:8px;
-          color:var(--text);font-family:'Share Tech Mono',monospace;font-size:11px;padding:8px;resize:none;outline:none"></textarea>
+        <textarea id="load-code" placeholder="Kayıt kodunu yapıştır..." style="width:100%;height:80px;background:var(--bg);border:1px solid var(--yellow);border-radius:8px;color:var(--text);font-family:'Share Tech Mono',monospace;font-size:11px;padding:8px;resize:none;outline:none"></textarea>
         <button class="btn yellow" style="margin-top:6px" onclick="loadFromCode()">✓ YÜKLE</button>
       </div>
     </div>
@@ -245,9 +227,9 @@ window.addEventListener('appinstalled',()=>{deferredPrompt=null;document.getElem
 async function installPWA(){if(deferredPrompt){deferredPrompt.prompt();const{outcome}=await deferredPrompt.userChoice;if(outcome==='accepted')deferredPrompt=null;}else{triggerAlert('info',navigator.userAgent.includes('Safari')&&!navigator.userAgent.includes('Chrome')?'Safari: Paylaş → Ana Ekrana Ekle':'Tarayıcı menüsü → Ana Ekrana Ekle');}}
 function dismissPWA(){document.getElementById('pwa-banner').style.display='none';}
 
-async function requestNotifPerm(){if(!('Notification'in window)){document.getElementById('notif-status').textContent='❌ Bu tarayıcı bildirimleri desteklemiyor';return;}const p=await Notification.requestPermission();const el=document.getElementById('notif-status');if(p==='granted'){el.style.color='var(--green)';el.textContent='✓ Bildirim izni verildi';new Notification("Shannon'ın Şeytanı",{body:'Sinyal bildirimleri aktif!',icon:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><text y="52" font-size="52">📈</text></svg>')});}else{el.style.color='var(--red)';el.textContent=p==='denied'?'❌ İzin reddedildi — tarayıcı ayarlarından açın':'⚠ İzin verilmedi';}}
+async function requestNotifPerm(){if(!('Notification'in window)){document.getElementById('notif-status').textContent='❌ Bu tarayıcı bildirimleri desteklemiyor';return;}const p=await Notification.requestPermission();const el=document.getElementById('notif-status');if(p==='granted'){el.style.color='var(--green)';el.textContent='✓ Bildirim izni verildi';}else{el.style.color='var(--red)';el.textContent=p==='denied'?'❌ İzin reddedildi':'⚠ İzin verilmedi';}}
 
-function sendPushNotif(type,msg){if(!document.getElementById('push-toggle').checked)return;if(Notification.permission!=='granted')return;new Notification(type==='buy'?'⬆ AL SİNYALİ':'⬇ SAT SİNYALİ',{body:msg,icon:'data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><text y="52" font-size="52">📈</text></svg>'),tag:'shannon-signal',renotify:true});}
+function sendPushNotif(type,msg){if(!document.getElementById('push-toggle').checked)return;if(Notification.permission!=='granted')return;new Notification(type==='buy'?'⬆ AL SİNYALİ':'⬇ SAT SİNYALİ',{body:msg,tag:'shannon-signal',renotify:true});}
 
 const PORT=[
   {ticker:'Z30EA',name:'Ziraat 30 Endeks A',target:15,buyLim:14.2,sellLim:16.0,side:'offense'},
@@ -292,8 +274,6 @@ function buildSignalCards(){
 function commitPrice(t,v){const n=parseFloat(v);if(!isNaN(n)&&n>0)prices[t]=n;saveState();refreshDisplays();checkSignal(t);}
 function commitSP(t,v){const n=parseFloat(v);startPrices[t]=isNaN(n)?0:n;saveState();refreshDisplays();}
 function commitSL(t,v){const n=parseInt(v);startLots[t]=isNaN(n)?0:n;saveState();refreshDisplays();}
-function saveState(){try{const d=JSON.stringify({prices,prevClose,startPrices,startLots});localStorage.setItem('shannon_v2',d);sessionStorage.setItem('shannon_v2',d);}catch(e){console.log('save err',e);}}
-function loadState(){try{const raw=localStorage.getItem('shannon_v2')||sessionStorage.getItem('shannon_v2');if(!raw)return;const s=JSON.parse(raw);prices=s.prices||{};prevClose=s.prevClose||{};startPrices=s.startPrices||{};startLots=s.startLots||{};}catch(e){console.log('load err',e);}}
 
 function buildLotInputs(){
   const c=document.getElementById('lot-card');
@@ -324,7 +304,7 @@ function refreshDisplays(){
     const sb=document.getElementById('sigbox-'+p.ticker);
     if(sb){if(sig==='buy'&&pr>0&&tv>0){const tL=Math.floor(tv*p.target/100/pr),diff=Math.max(0,tL-lo);sb.innerHTML=`<div class="signal-box buy"><div class="signal-title">⬆ AL SİNYALİ</div><div class="signal-row"><span>Hedef Lot</span><span class="signal-val" style="color:var(--green)">${tL}</span></div><div class="signal-row"><span>Alım Adedi</span><span class="signal-val" style="color:var(--green)">${diff} lot</span></div><div class="signal-row"><span>Alım Tutarı</span><span class="signal-val" style="color:var(--green)">₺${fmt(diff*pr)}</span></div></div>`;}else if(sig==='sell'&&pr>0&&tv>0){const tL=Math.floor(tv*p.target/100/pr),diff=Math.max(0,lo-tL);sb.innerHTML=`<div class="signal-box sell"><div class="signal-title">⬇ SAT SİNYALİ</div><div class="signal-row"><span>Hedef Lot</span><span class="signal-val" style="color:var(--red)">${tL}</span></div><div class="signal-row"><span>Satım Adedi</span><span class="signal-val" style="color:var(--red)">${diff} lot</span></div><div class="signal-row"><span>Satım Tutarı</span><span class="signal-val" style="color:var(--red)">₺${fmt(diff*pr)}</span></div></div>`;}else sb.innerHTML='';}
     const cr=document.getElementById('cost-row-'+p.ticker),cv=document.getElementById('cost-val-'+p.ticker);
-    if(cr&&cv){if(startPrices[p.ticker]&&lo){cr.style.display='flex';cv.textContent='₺'+fmt(startPrices[p.ticker]*lo);}else{cr.style.display='none';}}
+    if(cr&&cv){if(startPrices[p.ticker]&&lo){cr.style.display='flex';cv.textContent='₺'+fmt(startPrices[p.ticker]*lo);}else cr.style.display='none';}
   });
   updateOverview(tv);renderAllocTable();renderPL();
 }
@@ -340,13 +320,53 @@ function checkSignal(ticker){const p=PORT.find(x=>x.ticker===ticker);if(!p)retur
 function triggerAlert(type,msg){if(type!=='info'){if(document.getElementById('vibrate-toggle').checked&&navigator.vibrate)navigator.vibrate(type==='buy'?[100,50,100]:[200,50,200,50,200]);if(document.getElementById('sound-toggle').checked){try{const ctx=new(window.AudioContext||window.webkitAudioContext)(),o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=type==='buy'?880:440;o.type='sine';g.gain.setValueAtTime(0.3,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.5);o.start();o.stop(ctx.currentTime+0.5);}catch(e){}}}const b=document.getElementById('alert-banner');document.getElementById('alert-text').textContent=(type==='buy'?'⬆ ':type==='sell'?'⬇ ':'ℹ ')+msg;b.className=type||'info';b.style.display='flex';setTimeout(closeAlert,5000);}
 function closeAlert(){document.getElementById('alert-banner').style.display='none';}
 
-async function fetchAllPrices(){document.getElementById('refresh-icon').innerHTML='<span class="spinner"></span>';let fetched=0;for(const p of PORT){try{      const sym=encodeURIComponent(p.ticker+'.F');const res=await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${sym}?interval=1d&range=2d`);if(!res.ok)throw new Error();const data=await res.json();const meta=data?.chart?.result?.[0]?.meta;if(!meta)throw new Error();const cur=meta.regularMarketPrice||0;if(cur>0){prices[p.ticker]=cur;prevClose[p.ticker]=meta.previousClose||meta.chartPreviousClose||0;const inp=document.getElementById('price-'+p.ticker);if(inp&&!inp.matches(':focus'))inp.value=cur;fetched++;}}catch(e){}}const now=new Date();document.getElementById('last-update').textContent=`Son: ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;document.getElementById('refresh-icon').textContent='⟳';saveState();refreshDisplays();PORT.forEach(p=>checkSignal(p.ticker));if(fetched===0)triggerAlert('sell','Fiyat alınamadı — manuel giriş yapın');}
+async function fetchPrice(ticker){
+  // TEFAS API - Türk fonları için resmi kaynak
+  const today=new Date();
+  for(let i=0;i<5;i++){
+    const d=new Date(today);d.setDate(d.getDate()-i);
+    const dd=d.toISOString().split('T')[0];
+    try{
+      const res=await fetch(`https://ws.spk.gov.tr/PortfolioValues/api/PortfoyDegerleri/GetPortfoyDegerleri?fonKod=${ticker}&baslangicTarihi=${dd}&bitisTarihi=${dd}`,{headers:{'Accept':'application/json'}});
+      if(!res.ok)continue;
+      const data=await res.json();
+      if(data&&data.length>0){
+        const v=parseFloat(data[0].BirimPayDegeri||data[0].birimPayDegeri||data[0].BIRIM_PAY_DEGERI||0);
+        if(v>0)return v;
+      }
+    }catch(e){}
+  }
+  return 0;
+}
+
+async function fetchAllPrices(){
+  document.getElementById('refresh-icon').innerHTML='<span class="spinner"></span>';
+  let fetched=0;
+  for(const p of PORT){
+    try{
+      const cur=await fetchPrice(p.ticker);
+      if(cur>0){
+        prevClose[p.ticker]=prices[p.ticker]||cur;
+        prices[p.ticker]=cur;
+        const inp=document.getElementById('price-'+p.ticker);
+        if(inp&&!inp.matches(':focus'))inp.value=cur.toFixed(4);
+        fetched++;
+      }
+    }catch(e){}
+  }
+  const now=new Date();
+  document.getElementById('last-update').textContent=`Son: ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
+  document.getElementById('refresh-icon').textContent='⟳';
+  saveState();refreshDisplays();
+  PORT.forEach(p=>checkSignal(p.ticker));
+  if(fetched===0)triggerAlert('sell','Fiyat alınamadı — manuel giriş yapın');
+}
 
 function startAutoRefresh(){if(arTimer)clearInterval(arTimer);if(document.getElementById('auto-refresh').checked)arTimer=setInterval(fetchAllPrices,60000);}
 function toggleAutoRefresh(){startAutoRefresh();}
 
-function saveState(){try{localStorage.setItem('shannon_state',JSON.stringify({prices,prevClose,startPrices,startLots}));}catch(e){}}
-function loadState(){try{const raw=localStorage.getItem('shannon_state');if(!raw)return;const s=JSON.parse(raw);if(s.prices)prices=s.prices;if(s.prevClose)prevClose=s.prevClose;if(s.startPrices)startPrices=s.startPrices;if(s.startLots)startLots=s.startLots;}catch(e){}}
+function saveState(){try{const d=JSON.stringify({prices,prevClose,startPrices,startLots});localStorage.setItem('shannon_v2',d);}catch(e){}}
+function loadState(){try{const raw=localStorage.getItem('shannon_v2');if(!raw)return;const s=JSON.parse(raw);prices=s.prices||{};prevClose=s.prevClose||{};startPrices=s.startPrices||{};startLots=s.startLots||{};}catch(e){}}
 
 function saveAndCopy(){const code=btoa(unescape(encodeURIComponent(JSON.stringify({prices,prevClose,startPrices,startLots}))));document.getElementById('save-code').value=code;document.getElementById('save-code-wrap').style.display='block';navigator.clipboard?.writeText(code).then(()=>triggerAlert('buy','Kod kopyalandı!')).catch(()=>{document.getElementById('save-code').select();});}
 function showLoadInput(){const w=document.getElementById('load-wrap');w.style.display=w.style.display==='none'?'block':'none';}
