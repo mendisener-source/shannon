@@ -365,8 +365,39 @@ async function fetchAllPrices(){
 function startAutoRefresh(){if(arTimer)clearInterval(arTimer);if(document.getElementById('auto-refresh').checked)arTimer=setInterval(fetchAllPrices,60000);}
 function toggleAutoRefresh(){startAutoRefresh();}
 
-function saveState(){try{const d=JSON.stringify({prices,prevClose,startPrices,startLots});localStorage.setItem('shannon_v2',d);}catch(e){}}
-function loadState(){try{const raw=localStorage.getItem('shannon_v2');if(!raw)return;const s=JSON.parse(raw);prices=s.prices||{};prevClose=s.prevClose||{};startPrices=s.startPrices||{};startLots=s.startLots||{};}catch(e){}}
+function saveState(){
+  try{
+    const d=JSON.stringify({prices,prevClose,startPrices,startLots});
+    // 1) localStorage
+    try{localStorage.setItem('shannon_v2',d);}catch(e){}
+    // 2) sessionStorage
+    try{sessionStorage.setItem('shannon_v2',d);}catch(e){}
+    // 3) Cookie (en güvenilir Safari PWA için)
+    try{
+      const encoded=btoa(unescape(encodeURIComponent(d)));
+      document.cookie='shannon_v2='+encoded+';path=/;max-age=31536000;SameSite=Strict';
+    }catch(e){}
+  }catch(e){}
+}
+function loadState(){
+  try{
+    // Önce localStorage
+    let raw=null;
+    try{raw=localStorage.getItem('shannon_v2');}catch(e){}
+    // Sonra sessionStorage
+    if(!raw){try{raw=sessionStorage.getItem('shannon_v2');}catch(e){}}
+    // Son çare cookie
+    if(!raw){
+      try{
+        const m=document.cookie.match(/shannon_v2=([^;]+)/);
+        if(m)raw=decodeURIComponent(escape(atob(m[1])));
+      }catch(e){}
+    }
+    if(!raw)return;
+    const s=JSON.parse(raw);
+    prices=s.prices||{};prevClose=s.prevClose||{};startPrices=s.startPrices||{};startLots=s.startLots||{};
+  }catch(e){}
+}
 
 function saveAndCopy(){const code=btoa(unescape(encodeURIComponent(JSON.stringify({prices,prevClose,startPrices,startLots}))));document.getElementById('save-code').value=code;document.getElementById('save-code-wrap').style.display='block';navigator.clipboard?.writeText(code).then(()=>triggerAlert('buy','Kod kopyalandı!')).catch(()=>{document.getElementById('save-code').select();});}
 function showLoadInput(){const w=document.getElementById('load-wrap');w.style.display=w.style.display==='none'?'block':'none';}
