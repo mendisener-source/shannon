@@ -202,8 +202,18 @@ const PORT=[
 
 let prices={},prevClose={},startPrices={},startLots={},arTimer=null;
 
-window.onload=()=>{loadState();buildSignalCards();buildLotInputs();refreshDisplays();startAutoRefresh();};
+window.onload=()=>{loadState();buildSignalCards();buildLotInputs();fillInputs();refreshDisplays();startAutoRefresh();};
 window.onbeforeunload=()=>{saveState();};
+function fillInputs(){
+  PORT.forEach(p=>{
+    const inp=document.getElementById('price-'+p.ticker);
+    if(inp&&prices[p.ticker])inp.value=prices[p.ticker];
+    const si=document.getElementById('sp-'+p.ticker);
+    if(si&&startPrices[p.ticker])si.value=startPrices[p.ticker];
+    const li=document.getElementById('sl-'+p.ticker);
+    if(li&&startLots[p.ticker])li.value=startLots[p.ticker];
+  });
+}
 
 function showTab(el){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');document.getElementById('tab-'+el.dataset.tab).classList.add('active');}
 
