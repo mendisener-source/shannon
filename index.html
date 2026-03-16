@@ -229,7 +229,17 @@ function buildSignalCards(){
   });
 }
 
-function commitPrice(t,v){const n=parseFloat(v);if(!isNaN(n)&&n>0)prices[t]=n;saveState();refreshDisplays();checkSignal(t);}
+function commitPrice(t,v){
+  const n=parseFloat(v);
+  if(!isNaN(n)&&n>0){
+    prevClose[t]=prices[t]||n;
+    prices[t]=n;
+  }
+  saveState();
+  refreshDisplays();
+  checkSignal(t);
+  triggerAlert('info',`${t} fiyatı kaydedildi ✓`);
+}
 function commitSP(t,v){const n=parseFloat(v);startPrices[t]=isNaN(n)?0:n;saveState();refreshDisplays();}
 function commitSL(t,v){const n=parseInt(v);startLots[t]=isNaN(n)?0:n;saveState();refreshDisplays();}
 
