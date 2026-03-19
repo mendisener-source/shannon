@@ -6,14 +6,14 @@
 <meta name="theme-color" content="#0a0c0f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Sektörel ETF">
-<title>Shannon Sektörel ETF</title>
+<meta name="apple-mobile-web-app-title" content="Shannon ETF">
+<title>Shannon ETF</title>
 <link rel="manifest" id="manifest-link">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a0c0f;--surface:#111417;--card:#161a1f;--border:#1e2530;
   --accent:#00e5ff;--green:#00ff88;--red:#ff3860;--yellow:#ffd600;
-  --text:#e0e8f0;--muted:#5a6a7a;--bull:#ff6d00;--bear:#00b4d8;--gold:#ffd700}
+  --text:#e0e8f0;--muted:#5a6a7a;--bull:#ff6d00;--bear:#00b4d8}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden}
 body{padding-bottom:80px}
@@ -21,7 +21,7 @@ header{position:sticky;top:0;z-index:100;background:#0d1117;border-bottom:1px so
   padding:10px 16px;display:flex;align-items:center;justify-content:space-between;
   box-shadow:0 2px 20px rgba(0,229,255,.15)}
 .h-title{font-size:18px;font-weight:700;letter-spacing:2px;
-  background:linear-gradient(90deg,var(--accent),var(--gold));
+  background:linear-gradient(90deg,var(--accent),var(--green));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .h-sub{font-size:11px;color:var(--muted);font-family:'Share Tech Mono',monospace}
 .h-total{font-size:22px;font-weight:700;font-family:'Share Tech Mono',monospace;color:var(--accent)}
@@ -34,8 +34,7 @@ header{position:sticky;top:0;z-index:100;background:#0d1117;border-bottom:1px so
 .tab.active{color:var(--accent);border-bottom-color:var(--accent);background:rgba(0,229,255,.05)}
 .section{display:none;padding:12px}.section.active{display:block}
 .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;position:relative;overflow:hidden}
-.card.sector::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--bull),transparent)}
-.card.defensive::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
 .badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
 .badge.hold{background:rgba(90,106,122,.2);color:var(--muted);border:1px solid var(--muted)}
 .badge.buy{background:rgba(0,255,136,.15);color:var(--green);border:1px solid var(--green);animation:pg 1.5s infinite}
@@ -106,9 +105,8 @@ header{position:sticky;top:0;z-index:100;background:#0d1117;border-bottom:1px so
 .spinner{display:inline-block;width:14px;height:14px;border:2px solid var(--muted);
   border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.group-label{font-size:10px;font-weight:700;letter-spacing:2px;padding:3px 8px;border-radius:4px;text-transform:uppercase;margin-left:6px}
-.group-sector{background:rgba(255,109,0,.15);color:var(--bull);border:1px solid var(--bull)}
-.group-defensive{background:rgba(255,215,0,.15);color:var(--gold);border:1px solid var(--gold)}
+.currency-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;
+  background:rgba(0,229,255,.1);border:1px solid var(--accent);color:var(--accent);margin-left:6px;letter-spacing:1px}
 </style>
 </head>
 <body>
@@ -120,7 +118,7 @@ header{position:sticky;top:0;z-index:100;background:#0d1117;border-bottom:1px so
 
 <header>
   <div>
-    <div class="h-title">SEKTÖREL ETF</div>
+    <div class="h-title">SHANNON ETF <span class="currency-badge">USD</span></div>
     <div class="h-sub" id="last-update">Son güncelleme: —</div>
   </div>
   <div>
@@ -189,17 +187,16 @@ header{position:sticky;top:0;z-index:100;background:#0d1117;border-bottom:1px so
 <button class="fab" onclick="fetchAllPrices()">⟳</button>
 
 <script>
-const MANIFEST={name:"Shannon Sektörel ETF",short_name:"Sektörel ETF",display:"standalone",background_color:"#0a0c0f",theme_color:"#00e5ff",start_url:"./",icons:[{src:"data:image/svg+xml,"+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='36' fill='%230a0c0f'/><text x='96' y='130' text-anchor='middle' font-size='110' font-family='serif'>🏭</text></svg>"),sizes:"192x192",type:"image/svg+xml"}]};
+const MANIFEST={name:"Shannon ETF",short_name:"Shannon ETF",display:"standalone",background_color:"#0a0c0f",theme_color:"#00e5ff",start_url:"./",icons:[{src:"data:image/svg+xml,"+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='36' fill='%230a0c0f'/><text x='96' y='130' text-anchor='middle' font-size='110' font-family='serif'>📊</text></svg>"),sizes:"192x192",type:"image/svg+xml"}]};
 const blob=new Blob([JSON.stringify(MANIFEST)],{type:'application/json'});
 document.getElementById('manifest-link').href=URL.createObjectURL(blob);
 
 const PORT=[
-  {ticker:'TBXU', name:'Tech Bull 2x',       target:20, buyLim:17, sellLim:23, group:'sector'},
-  {ticker:'TEXU', name:'Energy Bull 2x',      target:20, buyLim:17, sellLim:23, group:'sector'},
-  {ticker:'TSXU', name:'Semiconductor 2x',    target:20, buyLim:17, sellLim:23, group:'sector'},
-  {ticker:'TTXU', name:'Financials Bull 2x',  target:20, buyLim:17, sellLim:23, group:'sector'},
-  {ticker:'UGL',  name:'Ultra Gold 2x',       target:10, buyLim:8,  sellLim:12, group:'defensive'},
-  {ticker:'TYD',  name:'Treasury Bull 3x',    target:10, buyLim:8,  sellLim:12, group:'defensive'},
+  {ticker:'AMDG', name:'AMD Growth',    target:20, buyLim:18, sellLim:22},
+  {ticker:'SPXL', name:'S&P 3x Bull',   target:20, buyLim:18, sellLim:22},
+  {ticker:'NVDU', name:'NVIDIA 2x',     target:20, buyLim:18, sellLim:22},
+  {ticker:'TSLL', name:'Tesla 2x Bull', target:20, buyLim:18, sellLim:22},
+  {ticker:'TMF',  name:'T-Bond 3x Bull',target:20, buyLim:18, sellLim:22},
 ];
 
 let prices={},prevClose={},startPrices={},startLots={},arTimer=null;
@@ -218,59 +215,50 @@ function signalOf(p){const pr=prices[p.ticker]||0,lo=startLots[p.ticker]||0;if(!
 
 function buildSignalCards(){
   const c=document.getElementById('tab-signals');c.innerHTML='';
-  ['sector','defensive'].forEach(group=>{
-    const items=PORT.filter(p=>p.group===group);
-    const h=document.createElement('div');h.className='sec-title';
-    const col=group==='sector'?'var(--bull)':'var(--gold)';
-    const label=group==='sector'?'SEKTÖR ETF':'SAVUNMA';
-    h.innerHTML=`<span class="dot" style="background:${col}"></span>${label} — %${items.reduce((s,p)=>s+p.target,0)}`;
-    c.appendChild(h);
-    items.forEach(p=>{
-      const col=group==='sector'?'var(--bull)':'var(--gold)';
-      const div=document.createElement('div');div.className=`card ${group}`;
-      div.innerHTML=`
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
-          <div>
-            <div style="font-size:20px;font-weight:700;color:${col}">${p.ticker}
-              <span class="group-label group-${group}">${group==='sector'?'Sektör':'Savunma'}</span>
-            </div>
-            <div style="font-size:11px;color:var(--muted);margin-top:2px">${p.name}</div>
-          </div>
-          <div style="text-align:right">
-            <span class="badge hold" id="badge-${p.ticker}">● BEKLİYOR</span>
-            <div id="pchange-${p.ticker}" style="font-size:11px;margin-top:4px;font-family:'Share Tech Mono',monospace;color:var(--muted)"></div>
-          </div>
+  const h=document.createElement('div');h.className='sec-title';
+  h.innerHTML=`<span class="dot" style="background:var(--accent)"></span>PORTFÖY — %${PORT.reduce((s,p)=>s+p.target,0)}`;
+  c.appendChild(h);
+  PORT.forEach(p=>{
+    const div=document.createElement('div');div.className='card';
+    div.innerHTML=`
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:var(--accent)">${p.ticker}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">${p.name}</div>
         </div>
-        <label class="inp-label">GÜNCEL FİYAT ($)</label>
-        <input class="inp" type="number" inputmode="decimal" step="0.01" placeholder="0.00"
-          id="price-${p.ticker}" onfocus="this.style.borderColor='var(--accent)'"
-          onblur="this.style.borderColor='var(--border)'; commitPrice('${p.ticker}', this.value)">
-        <div style="display:flex;justify-content:space-between;margin-top:8px;padding:0 2px">
-          <span style="font-size:11px;color:var(--muted)">MEVCUT AĞIRLIK</span>
-          <span style="font-family:'Share Tech Mono',monospace;font-size:13px">
-            <span id="cpct-${p.ticker}">—</span>
-            <span style="color:var(--muted)"> / ${p.target}%</span>
-          </span>
+        <div style="text-align:right">
+          <span class="badge hold" id="badge-${p.ticker}">● BEKLİYOR</span>
+          <div id="pchange-${p.ticker}" style="font-size:11px;margin-top:4px;font-family:'Share Tech Mono',monospace;color:var(--muted)"></div>
         </div>
-        <div style="font-size:10px;color:var(--muted);display:flex;justify-content:space-between;margin-top:8px">
-          <span style="color:var(--green)">AL ≤ ${p.buyLim}%</span>
-          <span>BANT ±%${p.target===10?2:3}</span>
-          <span style="color:var(--red)">SAT ≥ ${p.sellLim}%</span>
-        </div>
-        <div class="band-bar">
-          <div class="band-fill" id="bfill-${p.ticker}" style="width:0%;background:var(--accent)"></div>
-          <div class="bm" id="bm-buy-${p.ticker}" style="background:var(--green)"></div>
-          <div class="bm" id="bm-sell-${p.ticker}" style="background:var(--red)"></div>
-          <div class="bm" id="bm-cur-${p.ticker}" style="background:var(--yellow);width:2px"></div>
-        </div>
-        <div class="stats-row">
-          <div class="stat-box"><div class="stat-label">Hedef $</div><div class="stat-val" id="tval-${p.ticker}">—</div></div>
-          <div class="stat-box"><div class="stat-label">Mevcut $</div><div class="stat-val" id="cval-${p.ticker}">—</div></div>
-          <div class="stat-box"><div class="stat-label">Adet</div><div class="stat-val" id="lot-disp-${p.ticker}">—</div></div>
-        </div>
-        <div id="sigbox-${p.ticker}"></div>`;
-      c.appendChild(div);
-    });
+      </div>
+      <label class="inp-label">GÜNCEL FİYAT ($)</label>
+      <input class="inp" type="number" inputmode="decimal" step="0.01" placeholder="0.00"
+        id="price-${p.ticker}" onfocus="this.style.borderColor='var(--accent)'"
+        onblur="this.style.borderColor='var(--border)'; commitPrice('${p.ticker}', this.value)">
+      <div style="display:flex;justify-content:space-between;margin-top:8px;padding:0 2px">
+        <span style="font-size:11px;color:var(--muted)">MEVCUT AĞIRLIK</span>
+        <span style="font-family:'Share Tech Mono',monospace;font-size:13px">
+          <span id="cpct-${p.ticker}">—</span>
+          <span style="color:var(--muted)"> / ${p.target}%</span>
+        </span>
+      </div>
+      <div style="font-size:10px;color:var(--muted);display:flex;justify-content:space-between;margin-top:8px">
+        <span style="color:var(--green)">AL ≤ ${p.buyLim}%</span><span>BANT ±%3</span>
+        <span style="color:var(--red)">SAT ≥ ${p.sellLim}%</span>
+      </div>
+      <div class="band-bar">
+        <div class="band-fill" id="bfill-${p.ticker}" style="width:0%;background:var(--accent)"></div>
+        <div class="bm" id="bm-buy-${p.ticker}" style="background:var(--green)"></div>
+        <div class="bm" id="bm-sell-${p.ticker}" style="background:var(--red)"></div>
+        <div class="bm" id="bm-cur-${p.ticker}" style="background:var(--yellow);width:2px"></div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-label">Hedef $</div><div class="stat-val" id="tval-${p.ticker}">—</div></div>
+        <div class="stat-box"><div class="stat-label">Mevcut $</div><div class="stat-val" id="cval-${p.ticker}">—</div></div>
+        <div class="stat-box"><div class="stat-label">Adet</div><div class="stat-val" id="lot-disp-${p.ticker}">—</div></div>
+      </div>
+      <div id="sigbox-${p.ticker}"></div>`;
+    c.appendChild(div);
   });
 }
 
@@ -282,7 +270,7 @@ function buildLotInputs(){
   const c=document.getElementById('lot-card');
   c.innerHTML=PORT.map((p,i)=>`
     <div style="padding:14px;${i<PORT.length-1?'border-bottom:1px solid var(--border)':''}">
-      <div style="font-size:16px;font-weight:700;margin-bottom:10px;color:${p.group==='sector'?'var(--bull)':'var(--gold)'}">
+      <div style="font-size:16px;font-weight:700;margin-bottom:10px;color:var(--accent)">
         ${p.ticker} <span style="font-size:11px;color:var(--muted);font-weight:400">${p.name}</span></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <div><label class="inp-label">ORT. MALİYET ($)</label>
@@ -290,7 +278,7 @@ function buildLotInputs(){
             placeholder="0.00" id="sp-${p.ticker}" value="${startPrices[p.ticker]||''}"
             onfocus="this.style.borderColor='var(--accent)'"
             onblur="this.style.borderColor='var(--border)'; commitSP('${p.ticker}', this.value)"></div>
-        <div><label class="inp-label">ADET</label>
+        <div><label class="inp-label">ADET (Hisse)</label>
           <input class="inp inp-sm" type="number" inputmode="decimal" step="0.001"
             placeholder="0" id="sl-${p.ticker}" value="${startLots[p.ticker]||''}"
             onfocus="this.style.borderColor='var(--accent)'"
@@ -323,11 +311,11 @@ function refreshDisplays(){
     const sb=document.getElementById('sigbox-'+p.ticker);
     if(sb){
       if(sig==='buy'&&pr>0&&tv>0){
-        const tS=tv*p.target/100/pr,diff=Math.max(0,tS-lo);
-        sb.innerHTML=`<div class="signal-box buy"><div class="signal-title">⬆ AL SİNYALİ</div><div class="signal-row"><span>Hedef Adet</span><span class="signal-val" style="color:var(--green)">${tS.toFixed(3)}</span></div><div class="signal-row"><span>Alım Adedi</span><span class="signal-val" style="color:var(--green)">${diff.toFixed(3)}</span></div><div class="signal-row"><span>Alım Tutarı</span><span class="signal-val" style="color:var(--green)">$${fmt2(diff*pr)}</span></div></div>`;
+        const tShares=(tv*p.target/100/pr),diff=Math.max(0,tShares-lo);
+        sb.innerHTML=`<div class="signal-box buy"><div class="signal-title">⬆ AL SİNYALİ</div><div class="signal-row"><span>Hedef Adet</span><span class="signal-val" style="color:var(--green)">${tShares.toFixed(3)}</span></div><div class="signal-row"><span>Alım Adedi</span><span class="signal-val" style="color:var(--green)">${diff.toFixed(3)}</span></div><div class="signal-row"><span>Alım Tutarı</span><span class="signal-val" style="color:var(--green)">$${fmt2(diff*pr)}</span></div></div>`;
       }else if(sig==='sell'&&pr>0&&tv>0){
-        const tS=tv*p.target/100/pr,diff=Math.max(0,lo-tS);
-        sb.innerHTML=`<div class="signal-box sell"><div class="signal-title">⬇ SAT SİNYALİ</div><div class="signal-row"><span>Hedef Adet</span><span class="signal-val" style="color:var(--red)">${tS.toFixed(3)}</span></div><div class="signal-row"><span>Satım Adedi</span><span class="signal-val" style="color:var(--red)">${diff.toFixed(3)}</span></div><div class="signal-row"><span>Satım Tutarı</span><span class="signal-val" style="color:var(--red)">$${fmt2(diff*pr)}</span></div></div>`;
+        const tShares=(tv*p.target/100/pr),diff=Math.max(0,lo-tShares);
+        sb.innerHTML=`<div class="signal-box sell"><div class="signal-title">⬇ SAT SİNYALİ</div><div class="signal-row"><span>Hedef Adet</span><span class="signal-val" style="color:var(--red)">${tShares.toFixed(3)}</span></div><div class="signal-row"><span>Satım Adedi</span><span class="signal-val" style="color:var(--red)">${diff.toFixed(3)}</span></div><div class="signal-row"><span>Satım Tutarı</span><span class="signal-val" style="color:var(--red)">$${fmt2(diff*pr)}</span></div></div>`;
       }else sb.innerHTML='';
     }
   });
@@ -345,7 +333,7 @@ function updateOverview(tv){
 
 function renderAllocTable(){
   const tbody=document.getElementById('alloc-tbody');if(!tbody)return;tbody.innerHTML='';
-  PORT.forEach(p=>{const cp=curPct(p),dev=cp-p.target,dc=Math.abs(dev)<0.5?'var(--muted)':dev>0?'var(--red)':'var(--green)';tbody.innerHTML+=`<tr><td style="color:${p.group==='sector'?'var(--bull)':'var(--gold)'};font-weight:700">${p.ticker}</td><td>${p.target}%</td><td>${cp.toFixed(2)}%</td><td style="color:${dc}">${dev>=0?'+':''}${dev.toFixed(2)}%</td></tr>`;});
+  PORT.forEach(p=>{const cp=curPct(p),dev=cp-p.target,dc=Math.abs(dev)<0.5?'var(--muted)':dev>0?'var(--red)':'var(--green)';tbody.innerHTML+=`<tr><td style="color:var(--accent);font-weight:700">${p.ticker}</td><td>${p.target}%</td><td>${cp.toFixed(2)}%</td><td style="color:${dc}">${dev>=0?'+':''}${dev.toFixed(2)}%</td></tr>`;});
 }
 
 function renderPL(){
@@ -357,7 +345,7 @@ function renderPL(){
     const cost=sp*lo,cur=pr>0?pr*lo:cost,pl=cur-cost,pct=cost>0?pl/cost*100:0;
     totalPL+=pl;totalCost+=cost;
     const cls=pct>0?'pos':pct<0?'neg':'neu',arr=pct>0?'▲':pct<0?'▼':'●';
-    html+=`<div class="pl-row"><div><div style="font-weight:700;font-size:15px;color:${p.group==='sector'?'var(--bull)':'var(--gold)'}">${p.ticker}</div><div style="font-size:11px;color:var(--muted)">${lo} × $${sp?fmt4(sp):'?'}</div></div><div class="pl-right"><div class="${cls}">${arr} ${pct>=0?'+':''}${pct.toFixed(2)}%</div><div class="${cls}" style="font-size:11px">${pl>=0?'+':''}$${fmt2(pl)}</div></div></div>`;
+    html+=`<div class="pl-row"><div><div style="font-weight:700;font-size:15px;color:var(--accent)">${p.ticker}</div><div style="font-size:11px;color:var(--muted)">${lo} × $${sp?fmt4(sp):'?'}</div></div><div class="pl-right"><div class="${cls}">${arr} ${pct>=0?'+':''}${pct.toFixed(2)}%</div><div class="${cls}" style="font-size:11px">${pl>=0?'+':''}$${fmt2(pl)}</div></div></div>`;
   });
   c.innerHTML=html;
   const tPct=totalCost>0?totalPL/totalCost*100:0,tc=tPct>0?'pos':tPct<0?'neg':'neu';
@@ -375,12 +363,27 @@ function rebalanceSuggestion(buyTicker){
   const buyP=PORT.find(p=>p.ticker===buyTicker);if(!buyP)return'';
   const buyPr=prices[buyTicker]||0;if(!buyPr)return'';
   const needed=tv*buyP.target/100-posVal(buyP);if(needed<=0)return'';
-  const sellers=PORT.filter(p=>p.ticker!==buyTicker&&curPct(p)>p.target);
+  // Fazla ağırlıklı olanları bul
+  const sellers=PORT.filter(p=>p.ticker!==buyTicker&&curPct(p)>p.target&&prices[p.ticker]>0);
   sellers.sort((a,b)=>curPct(b)-b.target-(curPct(a)-a.target));
   if(sellers.length===0)return'';
-  let html=`<div style="margin-top:8px;padding:10px 12px;background:rgba(0,229,255,.06);border:1px solid var(--accent);border-radius:8px"><div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:8px">⚖️ DENGE ÖNERİSİ — Alım İçin Sat</div>`;
+  let html=`<div style="margin-top:8px;padding:10px 12px;background:rgba(0,229,255,.06);border:1px solid var(--accent);border-radius:8px">
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:6px">⚖️ DENGE — Alım İçin Sat</div>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">Alım tutarı: $${fmt2(needed)}</div>`;
   let remaining=needed;
-  for(const s of sellers){if(remaining<=0)break;const excess=posVal(s)-tv*s.target/100;if(excess<=0)continue;const sellShares=Math.min(excess,remaining)/(prices[s.ticker]||1);if(sellShares<=0.001)continue;html+=`<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:var(--red)">↓ ${s.ticker} sat</span><span style="font-family:'Share Tech Mono',monospace;color:var(--red)">${sellShares.toFixed(3)} adet / $${fmt2(sellShares*(prices[s.ticker]||0))}</span></div>`;remaining-=sellShares*(prices[s.ticker]||0);}
+  for(const s of sellers){
+    if(remaining<=0)break;
+    const excess=posVal(s)-tv*s.target/100;if(excess<=0)continue;
+    const sellAmt=Math.min(excess,remaining);
+    const sellShares=sellAmt/(prices[s.ticker]||1);
+    if(sellShares<=0.001)continue;
+    html+=`<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+      <span style="color:var(--red)">↓ ${s.ticker} sat</span>
+      <span style="font-family:'Share Tech Mono',monospace;color:var(--red)">${sellShares.toFixed(3)} adet / $${fmt2(sellAmt)}</span>
+    </div>`;
+    remaining-=sellAmt;
+  }
+  if(remaining>0.01)html+=`<div style="font-size:11px;color:var(--muted);margin-top:4px">Ek nakit gerekli: $${fmt2(remaining)}</div>`;
   return html+'</div>';
 }
 
@@ -417,6 +420,7 @@ async function fetchAllPrices(){
   for(const p of PORT){
     try{
       const sym=encodeURIComponent(p.ticker);
+      // Önce allorigins proxy dene, sonra direkt Yahoo
       let res;
       try{
         const proxyUrl=`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${sym}?interval=1d&range=2d`)}`;
@@ -428,15 +432,17 @@ async function fetchAllPrices(){
       const data=await res.json();
       const meta=data?.chart?.result?.[0]?.meta;
       if(!meta)throw new Error();
-      const premarket=meta.preMarketPrice||0;
-      const regular=meta.regularMarketPrice||0;
-      const cur=premarket>0?premarket:regular>0?regular:0;
-      const marketState=meta.marketState||'CLOSED';
+      // Premarket > regularMarket > previousClose sırasıyla dene
+      const premarket = meta.preMarketPrice||0;
+      const regular   = meta.regularMarketPrice||0;
+      const cur = premarket > 0 ? premarket : regular > 0 ? regular : 0;
+      const marketState = meta.marketState||'CLOSED';
       if(cur>0){
         prevClose[p.ticker]=meta.previousClose||meta.chartPreviousClose||cur;
         prices[p.ticker]=cur;
         const inp=document.getElementById('price-'+p.ticker);
         if(inp&&!inp.matches(':focus'))inp.value=cur.toFixed(2);
+        // Market durumunu göster
         const pEl=document.getElementById('pchange-'+p.ticker);
         if(pEl){
           const ch=(cur-(meta.previousClose||cur))/(meta.previousClose||cur)*100;
@@ -462,20 +468,21 @@ function toggleAutoRefresh(){startAutoRefresh();}
 function saveState(){
   try{
     const d=JSON.stringify({prices,prevClose,startPrices,startLots});
-    try{localStorage.setItem('shannon_sektoral',d);}catch(e){}
-    try{sessionStorage.setItem('shannon_sektoral',d);}catch(e){}
-    try{const enc=btoa(unescape(encodeURIComponent(d)));document.cookie='shannon_sektoral='+enc+';path=/;max-age=31536000;SameSite=Strict';}catch(e){}
+    try{localStorage.setItem('shannon_etf_v2',d);}catch(e){}
+    try{sessionStorage.setItem('shannon_etf_v2',d);}catch(e){}
+    try{const enc=btoa(unescape(encodeURIComponent(d)));document.cookie='shannon_etf_v2='+enc+';path=/;max-age=31536000;SameSite=Strict';}catch(e){}
   }catch(e){}
 }
 function loadState(){
   try{
     let raw=null;
-    try{raw=localStorage.getItem('shannon_sektoral');}catch(e){}
-    if(!raw){try{raw=sessionStorage.getItem('shannon_sektoral');}catch(e){}}
-    if(!raw){try{const m=document.cookie.match(/shannon_sektoral=([^;]+)/);if(m)raw=decodeURIComponent(escape(atob(m[1])));}catch(e){}}
+    try{raw=localStorage.getItem('shannon_etf_v2');}catch(e){}
+    if(!raw){try{raw=sessionStorage.getItem('shannon_etf_v2');}catch(e){}}
+    if(!raw){try{const m=document.cookie.match(/shannon_etf_v2=([^;]+)/);if(m)raw=decodeURIComponent(escape(atob(m[1])));}catch(e){}}
     if(!raw)return;
     const s=JSON.parse(raw);
     prices=s.prices||{};prevClose=s.prevClose||{};startPrices=s.startPrices||{};startLots=s.startLots||{};
+    // Yüklenen fiyatları input'lara yaz
     PORT.forEach(p=>{
       const inp=document.getElementById('price-'+p.ticker);
       if(inp&&prices[p.ticker])inp.value=prices[p.ticker].toFixed(2);
